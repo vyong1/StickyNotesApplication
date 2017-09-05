@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotes_Backend", "Stic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotes_WPF", "StickyNotes_WPF\StickyNotes_WPF.csproj", "{0F5FF52B-FE44-44AE-98F7-6E5FD0E08EAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotes_Console", "StickyNotes_Console\StickyNotes_Console.csproj", "{9812E7BB-608F-42F4-A813-8E10C952F3CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0F5FF52B-FE44-44AE-98F7-6E5FD0E08EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F5FF52B-FE44-44AE-98F7-6E5FD0E08EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F5FF52B-FE44-44AE-98F7-6E5FD0E08EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9812E7BB-608F-42F4-A813-8E10C952F3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9812E7BB-608F-42F4-A813-8E10C952F3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9812E7BB-608F-42F4-A813-8E10C952F3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9812E7BB-608F-42F4-A813-8E10C952F3CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

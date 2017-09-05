@@ -31,7 +31,8 @@ namespace StickyNoteApplication.Models
             StringBuilder sb = new StringBuilder();
             sb.Append(AssignmentName);
             sb.Append(" ( ");
-            sb.Append(DueDate.Month.ToString());
+            sb.Append(DueDate.ToString("MMM"));
+            sb.Append(" ");
             sb.Append(DueDate.Day.ToString());
             //TODO: append the time the assignment is due
             sb.Append(" )");
