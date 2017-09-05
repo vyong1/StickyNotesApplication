@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StickyNoteApplication.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,12 @@ namespace StickyNoteApplication.Models
         public DateTime DueDate { get; set; }
         public string AssignmentName { get; set; }
 
+        public Assignment()
+        {
+            this.DueDate = DateTime.Now;
+            this.AssignmentName = "";
+        }
+
         public Assignment(string AssignmentName, DateTime DueDate)
         {
             this.DueDate = DueDate;
@@ -21,14 +28,17 @@ namespace StickyNoteApplication.Models
         {
             //Assume that it is due at midnight
             DateTime date = DateTime.Now.AddDays(DaysUntilDue);
-            DueDate = GetMidnightDate(date);
+            DueDate = Util.GetMidnight(date);
 
             this.AssignmentName = AssignmentName;
         }
 
+        //Formats the assignment into a human readable string
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append("\t");
+            sb.Append("> ");
             sb.Append(AssignmentName);
             sb.Append(" ( ");
             sb.Append(DueDate.ToString("MMM"));
@@ -39,10 +49,6 @@ namespace StickyNoteApplication.Models
             return sb.ToString();
         }
 
-        //Sets a datetime to midnight
-        private DateTime GetMidnightDate(DateTime datetime_param)
-        {
-            return new DateTime(datetime_param.Year, datetime_param.Month, datetime_param.Day, 11, 59, 59);
-        }
+
     }
 }

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using StickyNotes_Backend.Models;
 
 namespace StickyNotes_WPF
 {
@@ -37,13 +36,11 @@ namespace StickyNotes_WPF
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            StickyNote note = new StickyNote();
             NoteContents.Text = "Save";
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
-            StickyNote note = new StickyNote();
             NoteContents.Text = "Load";
         }
 
