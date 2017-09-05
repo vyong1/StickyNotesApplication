@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotes_Backend", "Stic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotes_WPF", "StickyNotes_WPF\StickyNotes_WPF.csproj", "{0F5FF52B-FE44-44AE-98F7-6E5FD0E08EAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotes_Console", "StickyNotes_Console\StickyNotes_Console.csproj", "{99AAE358-5BC4-4723-8498-E871437B01C8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
