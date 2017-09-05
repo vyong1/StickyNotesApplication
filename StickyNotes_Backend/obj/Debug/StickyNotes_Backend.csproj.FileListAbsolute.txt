@@ -3,3 +3,4 @@ c:\users\viroon yong\source\repos\StickyNotesApplication\StickyNoteApplication\b
 c:\users\viroon yong\source\repos\StickyNotesApplication\StickyNoteApplication\obj\Debug\StickyNotes_Backend.csproj.CoreCompileInputs.cache
 c:\users\viroon yong\source\repos\StickyNotesApplication\StickyNoteApplication\obj\Debug\StickyNoteApplication.dll
 c:\users\viroon yong\source\repos\StickyNotesApplication\StickyNoteApplication\obj\Debug\StickyNoteApplication.pdb
+C:\Users\Viroon Yong\source\repos\StickyNotesApplication\StickyNoteApplication\obj\Debug\StickyNotes_Backend.csprojResolveAssemblyReference.cache
