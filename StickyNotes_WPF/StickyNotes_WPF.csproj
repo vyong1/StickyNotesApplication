@@ -94,7 +94,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StickyNoteApplication\StickyNotes_Backend.csproj">
+    <ProjectReference Include="..\StickyNotes_Backend\StickyNotes_Backend.csproj">
       <Project>{97317e8c-a00f-459d-96aa-7415e4b6463c}</Project>
       <Name>StickyNotes_Backend</Name>
     </ProjectReference>
