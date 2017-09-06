@@ -1,7 +1,3 @@
 .vs/
-StickyNotes_Backend/bin/
-StickyNotes_Backend/obj/
-StickyNotes_Console/bin/
-StickyNotes_Console/obj/
-StickyNotes_WPF/bin/
-StickyNotes_WPF/obj/
+bin/
+obj/
