@@ -8,8 +8,8 @@ namespace StickyNoteApplication.Models
 {
     public class Course
     {
-        string Name { get; set; }
-        List<Assignment> Assignments { get; set; }
+        public string Name { get; set; }
+        public List<Assignment> Assignments { get; set; }
 
         public Course()
         {

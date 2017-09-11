@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StickyNoteApplication.Logic;
+using StickyNoteApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,12 +38,27 @@ namespace StickyNotes_WPF
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            NoteContents.Text = "Save";
+            FlowDocument doc = new FlowDocument(
+                new Paragraph(new Bold(new Run("Hi")))
+                );
+            NoteContents.Document = doc;
+
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
-            NoteContents.Text = "Load";
+            //TODO Simplify this process
+
+            //Parse the homework
+            HomeworkTextParser hwtp = new HomeworkTextParser(@"C:\Users\Viroon Yong\Desktop\TestHomework.txt");
+            List<Course> allCoursesAndAssignments = hwtp.Parse();
+
+            //Build the document
+            FlowDocumentBuilder fdb = new FlowDocumentBuilder(allCoursesAndAssignments);
+            FlowDocument doc = fdb.BuildDocument();
+
+            //Set the text
+            NoteContents.Document = doc;
         }
 
         private void FontUp_Click(object sender, RoutedEventArgs e)
@@ -69,6 +86,47 @@ namespace StickyNotes_WPF
         }
 
         #endregion
+
+
     }
+
+    #region FlowDocumentBuilder
+
+    class FlowDocumentBuilder
+    {
+        public List<Course> Courses { get; set; }
+
+        public FlowDocumentBuilder(List<Course> courses)
+        {
+            this.Courses = courses;
+        }
+
+        public FlowDocument BuildDocument()
+        {
+            FlowDocument doc = new FlowDocument();
+            
+            foreach (Course course in Courses)
+            {
+                doc.Blocks.Add(new Paragraph(new Run(course.Name)) { Margin = new Thickness(0)});
+
+
+                List lst = new List();
+                lst.Margin = new Thickness(0);
+                lst.MarkerOffset = 5;
+                lst.MarkerStyle = TextMarkerStyle.Circle;
+
+                foreach (Assignment assignment in course.Assignments)
+                {
+                    lst.ListItems.Add(new ListItem(new Paragraph(new Run(assignment.ToString()))));
+                }
+
+                doc.Blocks.Add(lst);
+            }
+
+            return doc;
+        }
+    }
+
+    #endregion
 
 }

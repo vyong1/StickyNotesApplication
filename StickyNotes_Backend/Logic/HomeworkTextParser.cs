@@ -26,17 +26,18 @@ namespace StickyNoteApplication.Logic
                 Course currentCourse = null; //The current course being parsed
                 using (StreamReader sr = new StreamReader(FilePath))
                 {
-                    String line = sr.ReadToEnd();
-                    
-
-                    if(IsCourse(line))
+                    String line = "";
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        allCourses.Add(ParseCourse(line));
-                        currentCourse = allCourses.Last();
-                    }
-                    else
-                    {
-                        currentCourse.AddAssignment(ParseAssignment(line));
+                        if (IsCourse(line))
+                        {
+                            allCourses.Add(ParseCourse(line));
+                            currentCourse = allCourses.Last();
+                        }
+                        else if (line.Trim() != string.Empty)
+                        {
+                            currentCourse.AddAssignment(ParseAssignment(line));
+                        }
                     }
                 }
             }
@@ -63,25 +64,28 @@ namespace StickyNoteApplication.Logic
 
         private Course ParseCourse(string line)
         {
-            //Strip the '_' from the beginning and end of the line
+            //A course is formatted for example as _MATH 210
             line = line.Replace("_", string.Empty);
+            line = line.Trim();
 
             return new Course(line, new List<Assignment>());
         }
 
         private Assignment ParseAssignment(string line)
         {
-            line = line.Trim();
+            //An assignment is formatted for example as >Assignment (Sep 10)
             line = line.Replace(">", string.Empty);
+            line = line.Trim();
 
             //Parse the assignment name
             int dateStartIndex = line.IndexOf('(');
             string assignmentName = line.Substring(0, dateStartIndex);
-
+            
             //Parse the due date
+            //string dateString = line.Substring(dateStartIndex, line.Length - 2);
             // TODO
 
-            return new Assignment();
+            return new Assignment(assignmentName, DateTime.Now);
         }
     }
 }

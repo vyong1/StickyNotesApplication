@@ -51,9 +51,13 @@
             </Grid>
 
             <!-- Textbox -->
-            <TextBox FontSize="14" Text="" Grid.Row="1" Name="NoteContents" Grid.ColumnSpan="2">
-
-            </TextBox>
+            <RichTextBox FontSize="14" Grid.Row="1" Name="NoteContents" Grid.ColumnSpan="2">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
 
         </Grid>
     </Grid>

@@ -37,15 +37,13 @@ namespace StickyNoteApplication.Models
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("\t");
-            sb.Append("> ");
             sb.Append(AssignmentName);
-            sb.Append(" ( ");
+            sb.Append(" (");
             sb.Append(DueDate.ToString("MMM"));
             sb.Append(" ");
             sb.Append(DueDate.Day.ToString());
             //TODO: append the time the assignment is due
-            sb.Append(" )");
+            sb.Append(")");
             return sb.ToString();
         }
 

@@ -12,14 +12,15 @@ namespace StickyNotes_Console
     {
         static void Main(string[] args)
         {
-            Assignment a = new Assignment("Haha", DateTime.Now);
-            Assignment b = new Assignment();
-            List<Assignment> assignments = new List<Assignment>();
-            assignments.Add(a);
-            assignments.Add(b);
+            //Assignment a = new Assignment("Haha", DateTime.Now);
+            //Assignment b = new Assignment();
+            //List<Assignment> assignments = new List<Assignment>();
+            //assignments.Add(a);
+            //assignments.Add(b);
 
-            XmlSerializer xs = new XmlSerializer(typeof(List<Assignment>));
-            xs.Serialize(Console.Out, assignments);
+            //XmlSerializer xs = new XmlSerializer(typeof(List<Assignment>));
+            //xs.Serialize(Console.Out, assignments);
+            
 
             Console.ReadLine();
         }
