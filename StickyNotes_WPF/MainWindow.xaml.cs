@@ -107,20 +107,21 @@ namespace StickyNotes_WPF
             
             foreach (Course course in Courses)
             {
-                doc.Blocks.Add(new Paragraph(new Run(course.Name)) { Margin = new Thickness(0)});
 
 
                 List lst = new List();
                 lst.Margin = new Thickness(0);
                 lst.MarkerOffset = 5;
                 lst.MarkerStyle = TextMarkerStyle.Circle;
-
                 foreach (Assignment assignment in course.Assignments)
                 {
                     lst.ListItems.Add(new ListItem(new Paragraph(new Run(assignment.ToString()))));
                 }
 
                 doc.Blocks.Add(lst);
+
+                //Add a "newline"
+                doc.Blocks.Add(new Paragraph() { Margin = new Thickness(0) });
             }
 
             return doc;
