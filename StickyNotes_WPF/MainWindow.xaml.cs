@@ -31,6 +31,7 @@ namespace StickyNotes_WPF
         private void Init()
         {
             FontLabel.Content = NoteContents.FontSize;
+            Load_Click(null, null); //Tentative!
         }
 
 
