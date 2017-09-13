@@ -50,7 +50,13 @@ namespace StickyNotes_WPF
             //TODO Simplify this process
 
             //Parse the homework
-            HomeworkTextParser hwtp = new HomeworkTextParser(@"C:\Users\Viroon Yong\Desktop\TestHomework.txt");
+            //HomeworkTextParser hwtp = new HomeworkTextParser(@"C:\Users\Viroon Yong\Desktop\TestHomework.txt");
+            string filename = @"Homework.txt";
+            string path = Environment.CurrentDirectory;
+            path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
+            path = System.IO.Path.Combine(path, filename);
+
+            HomeworkTextParser hwtp = new HomeworkTextParser(path);
             List<Course> allCoursesAndAssignments = hwtp.Parse();
 
             //Build the document

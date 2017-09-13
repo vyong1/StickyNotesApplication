@@ -10,13 +10,24 @@ namespace StickyNoteApplication.Logic
 {
     public class HomeworkTextParser
     {
+        /// <summary>
+        /// The filepath of the homework text file
+        /// </summary>
         public string FilePath { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="filepath"></param>
         public HomeworkTextParser(string filepath)
         {
             FilePath = filepath;
         }
 
+        /// <summary>
+        /// Parse the given filepath for a list of courses + assignments
+        /// </summary>
+        /// <returns></returns>
         public List<Course> Parse()
         {
             List<Course> allCourses = new List<Course>();
@@ -29,11 +40,13 @@ namespace StickyNoteApplication.Logic
                     String line = "";
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if (IsCourse(line))
+                        //A course has 4 capital letters in a row
+                        if (StringUtil.Has4CapitalLettersInARow(line))
                         {
                             allCourses.Add(ParseCourse(line));
                             currentCourse = allCourses.Last();
                         }
+                        //Assignment
                         else if (line.Trim() != string.Empty)
                         {
                             currentCourse.AddAssignment(ParseAssignment(line));
@@ -50,40 +63,44 @@ namespace StickyNoteApplication.Logic
             return allCourses;
         }
 
-        private bool IsCourse(string line)
-        {
-            if (line.Substring(0, 1).Equals("_"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+        /// <summary>
+        /// Parses a course from a line
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         private Course ParseCourse(string line)
         {
-            //A course is formatted for example as _MATH 210
+            //A course has 4 capital letters in a row
             line = line.Replace("_", string.Empty);
+            line = line.Replace(" ", string.Empty);
             line = line.Trim();
 
-            return new Course(line, new List<Assignment>());
+            //Format the course name nicely
+            StringBuilder sb = new StringBuilder();
+            sb.Append(line.Substring(0, 4));
+            sb.Append(" ");
+            sb.Append(line.Substring(4));
+
+            return new Course(sb.ToString(), new List<Assignment>());
         }
 
+        /// <summary>
+        /// Parses a an assignment from a line
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         private Assignment ParseAssignment(string line)
         {
             //An assignment is formatted for example as >Assignment (Sep 10)
             line = line.Replace(">", string.Empty);
+            line = line.Replace("-", string.Empty);
             line = line.Trim();
 
             //Parse the assignment name
             int dateStartIndex = line.IndexOf('(');
             string assignmentName = line.Substring(0, dateStartIndex);
-
-            //Parse the due date
-            //string dateString = line.Substring(dateStartIndex, line.Length - 2);
-            // TODO
+            
+            // TODO Parse the due date
 
             return new Assignment(assignmentName, DateTime.Now);
         }

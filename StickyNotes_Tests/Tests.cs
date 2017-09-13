@@ -71,4 +71,6 @@ namespace StickyNotes_Tests
             Assert.That(StringUtil.Has4CapitalLettersInARow("    > MATH 222") == true);
         }
     }
+
+
 }
