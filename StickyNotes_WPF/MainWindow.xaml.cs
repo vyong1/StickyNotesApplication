@@ -107,6 +107,7 @@ namespace StickyNotes_WPF
             
             foreach (Course course in Courses)
             {
+                doc.Blocks.Add(new Paragraph(new Bold(new Run(course.Name))) { Margin = new Thickness(0)});
 
 
                 List lst = new List();

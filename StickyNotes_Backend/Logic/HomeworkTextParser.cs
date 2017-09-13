@@ -52,7 +52,7 @@ namespace StickyNoteApplication.Logic
 
         private bool IsCourse(string line)
         {
-            if(line.Substring(0, 1).Equals("_"))
+            if (line.Substring(0, 1).Equals("_"))
             {
                 return true;
             }
@@ -80,7 +80,7 @@ namespace StickyNoteApplication.Logic
             //Parse the assignment name
             int dateStartIndex = line.IndexOf('(');
             string assignmentName = line.Substring(0, dateStartIndex);
-            
+
             //Parse the due date
             //string dateString = line.Substring(dateStartIndex, line.Length - 2);
             // TODO
