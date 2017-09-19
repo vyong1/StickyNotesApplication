@@ -22,7 +22,7 @@ namespace StickyNoteApplication.Models
         {
             //Assume that it is due at midnight
             DateTime date = DateTime.Now.AddDays(DaysUntilDue);
-            DueDate = DateUtil.GetMidnight(date);
+            DueDate = DateParser.GetMidnight(date);
 
             this.AssignmentName = AssignmentName;
         }
