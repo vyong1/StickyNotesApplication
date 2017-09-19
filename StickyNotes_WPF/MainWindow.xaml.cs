@@ -48,20 +48,14 @@ namespace StickyNotes_WPF
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
-            //TODO Simplify this process
-
-            //Parse the homework
-            //HomeworkTextParser hwtp = new HomeworkTextParser(@"C:\Users\Viroon Yong\Desktop\TestHomework.txt");
+            //Establish the directory
             string filename = @"Homework.txt";
-            string path = Environment.CurrentDirectory;
-            path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
-            path = System.IO.Path.Combine(path, filename);
-
-            HomeworkTextParser hwtp = new HomeworkTextParser(path);
-            List<Course> allCoursesAndAssignments = hwtp.Parse();
+            string homeworkFilepath = Environment.CurrentDirectory;
+            homeworkFilepath = System.IO.Path.GetFullPath(System.IO.Path.Combine(homeworkFilepath, @"..\..\")); //Move 2 folders up
+            homeworkFilepath = System.IO.Path.Combine(homeworkFilepath, filename);
 
             //Build the document
-            FlowDocumentBuilder fdb = new FlowDocumentBuilder(allCoursesAndAssignments);
+            FlowDocumentBuilder fdb = new FlowDocumentBuilder(homeworkFilepath);
             FlowDocument doc = fdb.BuildDocument();
 
             //Set the text
@@ -77,8 +71,6 @@ namespace StickyNotes_WPF
         {
             ChangeFontSize(-1);
         }
-
-
 
         #endregion
 
@@ -99,23 +91,38 @@ namespace StickyNotes_WPF
 
     #region FlowDocumentBuilder
 
-    class FlowDocumentBuilder
-    {
-        public List<Course> Courses { get; set; }
 
-        public FlowDocumentBuilder(List<Course> courses)
+    /// <summary>
+    /// Builds a flow document (a rich-text document)
+    /// </summary>
+    public class FlowDocumentBuilder
+    {
+        /// <summary>
+        /// Parses a homework file
+        /// </summary>
+        public HomeworkParser HWParser { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="HomeworkFilepath"></param>
+        public FlowDocumentBuilder(string HomeworkFilepath)
         {
-            this.Courses = courses;
+            HWParser = new HomeworkParser(HomeworkFilepath);
         }
 
+        /// <summary>
+        /// Builds the RTF document based off the list of courses and assignments
+        /// </summary>
+        /// <returns></returns>
         public FlowDocument BuildDocument()
         {
             FlowDocument doc = new FlowDocument();
+            HWParser.Parse(); //Parse the document
             
-            foreach (Course course in Courses)
+            foreach (Course course in HWParser.AllCourses)
             {
                 doc.Blocks.Add(new Paragraph(new Bold(new Run(course.Name))) { Margin = new Thickness(0)});
-
 
                 List lst = new List();
                 lst.Margin = new Thickness(0);

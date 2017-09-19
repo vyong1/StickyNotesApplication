@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StickyNoteApplication.Logic
 {
-    public class HomeworkTextParser
+    public class HomeworkParser
     {
         /// <summary>
         /// The filepath of the homework text file
@@ -16,10 +16,15 @@ namespace StickyNoteApplication.Logic
         public string FilePath { get; set; }
 
         /// <summary>
+        /// A list of all the courses (which includes a list of all the assignments respective to that course)
+        /// </summary>
+        public List<Course> AllCourses { get; set; } = new List<Course>();
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="filepath"></param>
-        public HomeworkTextParser(string filepath)
+        public HomeworkParser(string filepath)
         {
             FilePath = filepath;
         }
@@ -30,7 +35,7 @@ namespace StickyNoteApplication.Logic
         /// <returns></returns>
         public List<Course> Parse()
         {
-            List<Course> allCourses = new List<Course>();
+            AllCourses.Clear(); //Clear list of courses prior to parsing
 
             try
             {
@@ -43,8 +48,8 @@ namespace StickyNoteApplication.Logic
                         //A course has 4 capital letters in a row
                         if (StringUtil.Has4CapitalLettersInARow(line))
                         {
-                            allCourses.Add(ParseCourse(line));
-                            currentCourse = allCourses.Last();
+                            AllCourses.Add(ParseCourse(line));
+                            currentCourse = AllCourses.Last();
                         }
                         //Assignment
                         else if (line.Trim() != string.Empty)
@@ -60,7 +65,7 @@ namespace StickyNoteApplication.Logic
                 Console.WriteLine(e.Message);
             }
 
-            return allCourses;
+            return AllCourses;
         }
 
         /// <summary>
@@ -70,6 +75,8 @@ namespace StickyNoteApplication.Logic
         /// <returns></returns>
         private Course ParseCourse(string line)
         {
+            //TODO Replace this with a more robust system for checking courses
+
             //A course has 4 capital letters in a row
             line = line.Replace("_", string.Empty);
             line = line.Replace(" ", string.Empty);

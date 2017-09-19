@@ -33,7 +33,10 @@ namespace StickyNoteApplication.Models
             this.AssignmentName = AssignmentName;
         }
 
-        //Formats the assignment into a human readable string
+        /// <summary>
+        /// Formats the assignment into a readable string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
