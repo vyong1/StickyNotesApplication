@@ -20,27 +20,6 @@ namespace StickyNoteApplication.Logic
 
     public static class StringUtil
     {
-        public static bool Has4CapitalLettersInARow(string line)
-        {
-            int inARow = 0;
-            foreach(char c in line)
-            {
-                if(Char.IsUpper(c))
-                {
-                    inARow++;
-                }
-                else
-                {
-                    inARow = 0;
-                }
 
-                if(inARow == 4)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
     }
 }

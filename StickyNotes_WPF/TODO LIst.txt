@@ -1,0 +1,13 @@
+﻿<UI>
+-Refine the user interface
+-Add functionality for...
+	1.) Adding assignments/courses
+	2.) Removing assignments/courses
+	3.) Checkmarks for finishing courses
+	4.) Sorting by date
+</UI>
+
+<Backend>
+-Refactor Util - static classes are bad
+
+</Backend>

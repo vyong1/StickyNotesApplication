@@ -46,7 +46,7 @@ namespace StickyNoteApplication.Logic
                     while ((line = sr.ReadLine()) != null)
                     {
                         //A course has 4 capital letters in a row
-                        if (StringUtil.Has4CapitalLettersInARow(line))
+                        if (Has4CapitalLettersInARow(line))
                         {
                             AllCourses.Add(ParseCourse(line));
                             currentCourse = AllCourses.Last();
@@ -110,6 +110,29 @@ namespace StickyNoteApplication.Logic
             // TODO Parse the due date
 
             return new Assignment(assignmentName, DateTime.Now);
+        }
+
+        private bool Has4CapitalLettersInARow(string line)
+        {
+            int inARow = 0;
+            foreach (char c in line)
+            {
+                if (Char.IsUpper(c))
+                {
+                    inARow++;
+                }
+                else
+                {
+                    inARow = 0;
+                }
+
+                if (inARow == 4)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

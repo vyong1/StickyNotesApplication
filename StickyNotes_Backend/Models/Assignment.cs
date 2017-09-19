@@ -11,13 +11,7 @@ namespace StickyNoteApplication.Models
     {
         public DateTime DueDate { get; set; }
         public string AssignmentName { get; set; }
-
-        public Assignment()
-        {
-            this.DueDate = DateTime.Now;
-            this.AssignmentName = "";
-        }
-
+        
         public Assignment(string AssignmentName, DateTime DueDate)
         {
             this.DueDate = DueDate;
