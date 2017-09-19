@@ -1,5 +1,7 @@
 # StickyNotesApplication
 
+
+
 ## Synopsis
 
 A C# WPF application for managing homework sticky notes and todo's across different computers
@@ -7,7 +9,7 @@ A C# WPF application for managing homework sticky notes and todo's across differ
 ## Intended Design
 
 Overall *Intended* design (final product):
-The application runs on startup, reading a file that can be shared across the computer in some way (the cloud or something). For now, this file is just a specially formatted .txt, but the future plan is to implement a custom user-interface that modifies a custom formatted file. Additionally, I would like the user to be able to sort assignments by time
+The application runs on startup, reading a file that can be shared across computers in some way (the cloud or something). For now, this file is just a specially formatted .txt, but the future plan is to implement a custom user-interface that modifies a custom formatted file. Additionally, I would like the user to be able to sort assignments by due date, class, priority, or other things (still up in the air, but sorting by due date is a big priority).
 
 ## Motivation
 
