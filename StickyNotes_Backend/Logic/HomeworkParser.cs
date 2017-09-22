@@ -36,6 +36,7 @@ namespace StickyNoteApplication.Logic
         public List<Course> Parse()
         {
             AllCourses.Clear(); //Clear list of courses prior to parsing
+            DateParser DateParser = new DateParser();
 
             try
             {

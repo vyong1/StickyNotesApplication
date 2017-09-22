@@ -12,6 +12,12 @@ namespace StickyNoteApplication.Models
         public DateTime DueDate { get; set; }
         public string AssignmentName { get; set; }
         
+        //Empty ctor needed for serialization
+        public Assignment()
+        {
+
+        }
+
         public Assignment(string AssignmentName, DateTime DueDate)
         {
             this.DueDate = DueDate;

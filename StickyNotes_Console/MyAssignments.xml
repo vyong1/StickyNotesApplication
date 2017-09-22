@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCourse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Course>
+    <Name>CPEG 250</Name>
+    <Assignments>
+      <Assignment>
+        <DueDate>2017-09-21T23:27:58.9180011-04:00</DueDate>
+        <AssignmentName>haha</AssignmentName>
+      </Assignment>
+      <Assignment>
+        <DueDate>2017-09-21T23:27:58.9240171-04:00</DueDate>
+        <AssignmentName>Jimbo XVII</AssignmentName>
+      </Assignment>
+    </Assignments>
+  </Course>
+  <Course>
+    <Name>HAHA 101</Name>
+    <Assignments>
+      <Assignment>
+        <DueDate>2017-09-21T23:27:58.9240171-04:00</DueDate>
+        <AssignmentName>Aeschluss</AssignmentName>
+      </Assignment>
+    </Assignments>
+  </Course>
+</ArrayOfCourse>

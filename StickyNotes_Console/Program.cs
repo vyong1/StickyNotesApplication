@@ -1,6 +1,7 @@
 ﻿using StickyNoteApplication.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,30 @@ namespace StickyNotes_Console
     {
         static void Main(string[] args)
         {
-            //Assignment a = new Assignment("Haha", DateTime.Now);
-            //Assignment b = new Assignment();
-            //List<Assignment> assignments = new List<Assignment>();
-            //assignments.Add(a);
-            //assignments.Add(b);
+            List<Course> courses = new List<Course>();
 
-            //XmlSerializer xs = new XmlSerializer(typeof(List<Assignment>));
-            //xs.Serialize(Console.Out, assignments);
-            
+            courses.Add(new Course("CPEG 250", new List<Assignment>() {
+                new Assignment("haha", DateTime.Now),
+                new Assignment("Jimbo XVII", DateTime.Now)
+            }));
+
+            courses.Add(new Course("HAHA 101", new List<Assignment>() {
+                new Assignment("Aeschluss", DateTime.Now),
+            }));
+
+            //Establish the directory
+            string name = @"MyAssignments.xml";
+            string path = Environment.CurrentDirectory;
+            path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
+            path = System.IO.Path.Combine(path, name);
+
+            //Serialize
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Course>));
+            StreamWriter writer = new StreamWriter(path);
+            serializer.Serialize(writer, courses);
+
 
             Console.ReadLine();
         }
     }
 }
-    
