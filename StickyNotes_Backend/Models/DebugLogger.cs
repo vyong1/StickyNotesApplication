@@ -11,23 +11,18 @@ namespace StickyNoteApplication.Models
     {
         public string OutputPath { get; set; }
 
-        public DebugLogger(LogMode mode)
+        public DebugLogger(bool clearLogsFirst = false)
         {
             //TODO: Make this more robust
             OutputPath = @"C:/Users/Viroon Yong/source/repos/StickyNotesApplication/StickyNotes_Backend/Files/DebugLog.txt";
-
-            switch (mode)
-            {
-                case LogMode.AppendToOld:
-                    Log("\n");
-                    Log("===== " + "Logged at time: " + DateTime.Now);
-                    Log("\n");
-                    break;
-                case LogMode.NewSession:
-                    ClearLog();
-                    break;
-            }
             
+            if(clearLogsFirst)
+            {
+                ClearLog();
+            }
+
+            Log("===== " + "Logged started at: " + DateTime.Now);
+
         }
 
         public void Log(string message)
@@ -46,11 +41,4 @@ namespace StickyNoteApplication.Models
             }
         }
     }
-
-    public enum LogMode
-    {
-        NewSession,
-        AppendToOld
-    }
-
 }

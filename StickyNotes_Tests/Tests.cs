@@ -12,12 +12,20 @@ namespace StickyNotes_Tests
     [TestFixture]
     public class DebugLoggerTest
     {
-        DebugLogger logger = new DebugLogger();
-
         [Test]
         public void LogTest1()
         {
+            DebugLogger logger = new DebugLogger(true);
             logger.Log("Hi");
+            logger.Log("Beans");
+        }
+
+        [Test]
+        public void LogTest2()
+        {
+            DebugLogger logger = new DebugLogger(false);
+            logger.Log("Hi");
+            logger.Log("Beans");
         }
 
     }

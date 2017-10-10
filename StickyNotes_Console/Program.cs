@@ -18,10 +18,6 @@ namespace StickyNotes_Console
             string path = Environment.CurrentDirectory;
             path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
             path = System.IO.Path.Combine(path, name);
-
-            DebugLogger dlogger = new DebugLogger();
-            dlogger.Log("Hi");
-
             Console.WriteLine(path);
 
             //Ser(path);
