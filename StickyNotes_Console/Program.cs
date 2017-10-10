@@ -20,8 +20,10 @@ namespace StickyNotes_Console
             path = System.IO.Path.Combine(path, name);
 
             //Ser(path);
-            DeSer(path);
+            //DeSer(path);
             
+
+
             Console.ReadLine();
         }
 

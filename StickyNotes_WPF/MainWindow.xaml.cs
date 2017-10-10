@@ -1,4 +1,5 @@
-﻿using StickyNoteApplication.Logic;
+﻿using Microsoft.Win32;
+using StickyNoteApplication.Logic;
 using StickyNoteApplication.Models;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,6 @@ namespace StickyNotes_WPF
         private void Init()
         {
             FontLabel.Content = NoteContents.FontSize;
-            Load_Click(null, null); //Tentative!
         }
 
 
@@ -39,27 +39,29 @@ namespace StickyNotes_WPF
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocument doc = new FlowDocument(
-                new Paragraph(new Bold(new Run("Hi")))
-                );
-            NoteContents.Document = doc;
-
+            throw new NotImplementedException();
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
-            //Establish the directory
-            string filename = @"Homework.txt";
-            string homeworkFilepath = Environment.CurrentDirectory;
-            homeworkFilepath = System.IO.Path.GetFullPath(System.IO.Path.Combine(homeworkFilepath, @"..\..\")); //Move 2 folders up
-            homeworkFilepath = System.IO.Path.Combine(homeworkFilepath, filename);
+            OpenFileDialog ofd= new OpenFileDialog();
+            ofd.Filter = "XML Files|*.xml";
+            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (ofd.ShowDialog() == true)
+            {
+                string filepath = ofd.FileName;
 
-            //Build the document
-            FlowDocumentBuilder fdb = new FlowDocumentBuilder(homeworkFilepath);
-            FlowDocument doc = fdb.BuildDocument();
+                //Build the document
+                FlowDocumentBuilder fdb = new FlowDocumentBuilder(filepath);
+                FlowDocument doc = fdb.BuildDocument();
 
-            //Set the text
-            NoteContents.Document = doc;
+                //Set the text
+                NoteContents.Document = doc;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void FontUp_Click(object sender, RoutedEventArgs e)
