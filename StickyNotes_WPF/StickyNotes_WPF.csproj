@@ -100,9 +100,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Homework.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="TODO List.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

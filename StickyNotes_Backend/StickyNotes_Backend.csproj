@@ -44,10 +44,11 @@
     <Compile Include="Logic\HomeworkParser.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\DebugLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\Homework.txt" />
+    <Content Include="Files\DebugLog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
