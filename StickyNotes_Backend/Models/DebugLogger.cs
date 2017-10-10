@@ -21,6 +21,7 @@ namespace StickyNoteApplication.Models
                 ClearLog();
             }
 
+            Log(string.Empty); //Newline
             Log("===== " + "Logged started at: " + DateTime.Now);
 
         }

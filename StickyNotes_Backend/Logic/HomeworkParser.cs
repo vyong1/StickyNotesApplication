@@ -26,7 +26,8 @@ namespace StickyNoteApplication.Logic
         /// <param name="filepath"></param>
         public HomeworkParser(string filepath)
         {
-            FilePath = filepath;
+            throw new ObsoleteCodeException();
+            //FilePath = filepath;
         }
 
         /// <summary>

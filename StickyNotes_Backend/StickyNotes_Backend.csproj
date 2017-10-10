@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="Logic\DateParser.cs" />
     <Compile Include="Logic\HomeworkParser.cs" />
+    <Compile Include="Logic\HomeworkXmlSerializer.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DebugLogger.cs" />
+    <Compile Include="Models\ObsoleteCodeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

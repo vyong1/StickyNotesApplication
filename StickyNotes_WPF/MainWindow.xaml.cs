@@ -23,6 +23,8 @@ namespace StickyNotes_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        DebugLogger DLogger = new DebugLogger();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,6 +52,7 @@ namespace StickyNotes_WPF
             if (ofd.ShowDialog() == true)
             {
                 string filepath = ofd.FileName;
+                DLogger.Log("File opened: " + filepath);
 
                 //Build the document
                 FlowDocumentBuilder fdb = new FlowDocumentBuilder(filepath);
@@ -120,7 +123,6 @@ namespace StickyNotes_WPF
         public FlowDocument BuildDocument()
         {
             FlowDocument doc = new FlowDocument();
-            HWParser.Parse(); //Parse the document
             
             foreach (Course course in HWParser.AllCourses)
             {
