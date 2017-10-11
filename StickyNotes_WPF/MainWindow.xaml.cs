@@ -34,14 +34,37 @@ namespace StickyNotes_WPF
         private void Init()
         {
             FontLabel.Content = NoteContents.FontSize;
-        }
+            DLogger.Log(User.Instance.IsInstalled().ToString());
+            if(!User.Instance.IsInstalled())
+            {
+                User.Instance.Install();
+            }
 
+            User.Instance.Deserialize();
+            FlowDocumentBuilder fdb = new FlowDocumentBuilder();
+
+            //AddDummyCourses(); //TODO: Delete this
+
+            NoteContents.Document = fdb.BuildDocument(User.Instance.Courses);
+        }
+        
+        private void AddDummyCourses()
+        {
+            User.Instance.Courses.Add(new Course("CPEG 250", new List<Assignment>() {
+                new Assignment("haha", DateTime.Now),
+                new Assignment("Jimbo XVII", DateTime.Now)
+            }));
+
+            User.Instance.Courses.Add(new Course("HAHA 101", new List<Assignment>() {
+                new Assignment("Aeschluss", DateTime.Now),
+            }));
+        }
 
         #region Click Handlers
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            User.Instance.Serialize();
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
@@ -63,7 +86,7 @@ namespace StickyNotes_WPF
             }
             else
             {
-                throw new NotImplementedException();
+
             }
         }
 
@@ -123,7 +146,37 @@ namespace StickyNotes_WPF
             IEnumerable<Course> allcourses = HWXSerializer.Deserialize(filepath);
             foreach (Course course in allcourses)
             {
-                doc.Blocks.Add(new Paragraph(new Bold(new Run(course.Name))) { Margin = new Thickness(0)});
+                doc.Blocks.Add(new Paragraph(new Bold(new Run(course.Name))) { Margin = new Thickness(0) });
+
+                List lst = new List();
+                lst.Margin = new Thickness(0);
+                lst.MarkerOffset = 5;
+                lst.MarkerStyle = TextMarkerStyle.Circle;
+                foreach (Assignment assignment in course.Assignments)
+                {
+                    lst.ListItems.Add(new ListItem(new Paragraph(new Run(assignment.ToString()))));
+                }
+
+                doc.Blocks.Add(lst);
+
+                //Add a "newline"
+                doc.Blocks.Add(new Paragraph() { Margin = new Thickness(0) });
+            }
+
+            return doc;
+        }
+
+        /// <summary>
+        /// Builds the RTF document based off the list of courses and assignments
+        /// </summary>
+        /// <returns></returns>
+        public FlowDocument BuildDocument(List<Course> courses)
+        {
+            FlowDocument doc = new FlowDocument();
+
+            foreach (Course course in courses)
+            {
+                doc.Blocks.Add(new Paragraph(new Bold(new Run(course.Name))) { Margin = new Thickness(0) });
 
                 List lst = new List();
                 lst.Margin = new Thickness(0);
