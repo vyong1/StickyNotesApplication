@@ -14,7 +14,7 @@ namespace StickyNoteApplication.Logic
     {
         public HomeworkXmlSerializer()
         {
-
+            throw new ObsoleteCodeException();
         }
 
         public void Serialize(List<Course> courses, string path)

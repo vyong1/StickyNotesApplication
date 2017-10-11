@@ -34,7 +34,6 @@ namespace StickyNotes_WPF
         private void Init()
         {
             FontLabel.Content = NoteContents.FontSize;
-            DLogger.Log(User.Instance.IsInstalled().ToString());
             if(!User.Instance.IsInstalled())
             {
                 User.Instance.Install();
@@ -58,6 +57,8 @@ namespace StickyNotes_WPF
             User.Instance.Courses.Add(new Course("HAHA 101", new List<Assignment>() {
                 new Assignment("Aeschluss", DateTime.Now),
             }));
+
+            throw new DeleteThisCodeException();
         }
 
         #region Click Handlers
@@ -133,7 +134,7 @@ namespace StickyNotes_WPF
         /// <param name="HomeworkFilepath"></param>
         public FlowDocumentBuilder()
         {
-            HWXSerializer = new HomeworkXmlSerializer();
+
         }
 
         /// <summary>
