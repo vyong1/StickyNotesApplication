@@ -6,11 +6,3 @@
 	3.) Checkmarks for finishing courses
 	4.) Sorting by date
 </UI>
-
-<Backend>
--Add functionality for parsing date times
--Add more robust parsing
--Eventually convert to XML or a custom markup language instead of .txt 
-	(goes hand-in-hand with the UI Functionality mentioned above)
-
-</Backend>

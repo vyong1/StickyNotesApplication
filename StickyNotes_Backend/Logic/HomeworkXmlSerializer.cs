@@ -17,7 +17,7 @@ namespace StickyNoteApplication.Logic
 
         }
 
-        public void Serialize()
+        public void Serialize(List<Course> courses, string path)
         {
             throw new NotImplementedException();
         }
