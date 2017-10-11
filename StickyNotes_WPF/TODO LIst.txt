@@ -6,3 +6,7 @@
 	3.) Checkmarks for finishing courses
 	4.) Sorting by date
 </UI>
+
+<Backend>
+	-** Main Priority! **Add user persistence
+</Backend>
