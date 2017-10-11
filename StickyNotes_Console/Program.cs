@@ -19,9 +19,6 @@ namespace StickyNotes_Console
             //path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
             //path = System.IO.Path.Combine(path, name);
             //Console.WriteLine(path);
-
-            User user = new User();
-            user.InstallUser();
             
 
 
