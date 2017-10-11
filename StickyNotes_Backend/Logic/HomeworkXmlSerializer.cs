@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace StickyNoteApplication.Logic
@@ -16,15 +17,31 @@ namespace StickyNoteApplication.Logic
 
         }
 
+        public void Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Course> Deserialize(string path)
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Course>));
-            FileStream readStream = new FileStream(path, FileMode.Open);
-            List<Course> courses;
-            courses = deserializer.Deserialize(readStream) as List<Course>;
-            readStream.Close();
+            try
+            {
+                XmlSerializer deserializer = new XmlSerializer(typeof(List<Course>));
+                FileStream readStream = new FileStream(path, FileMode.Open);
+                List<Course> courses;
+                courses = deserializer.Deserialize(readStream) as List<Course>;
+                readStream.Close();
+                return courses;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Failed to read the file", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            return courses;
+                DebugLogger logger = new DebugLogger();
+                logger.Log("Exception in HomeworkXmlSerializer.Deserialize");
+                logger.Log(e.ToString());
+            }
+            return new List<Course>();
         }
     }
 }

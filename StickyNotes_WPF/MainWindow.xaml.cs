@@ -55,8 +55,8 @@ namespace StickyNotes_WPF
                 DLogger.Log("File opened: " + filepath);
 
                 //Build the document
-                FlowDocumentBuilder fdb = new FlowDocumentBuilder(filepath);
-                FlowDocument doc = fdb.BuildDocument();
+                FlowDocumentBuilder fdb = new FlowDocumentBuilder();
+                FlowDocument doc = fdb.BuildDocument(filepath);
 
                 //Set the text
                 NoteContents.Document = doc;
@@ -102,29 +102,26 @@ namespace StickyNotes_WPF
     /// </summary>
     public class FlowDocumentBuilder
     {
-        /// <summary>
-        /// Parses a homework file
-        /// </summary>
-        public HomeworkParser HWParser { get; set; }
+        HomeworkXmlSerializer HWXSerializer { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="HomeworkFilepath"></param>
-        public FlowDocumentBuilder(string HomeworkFilepath)
+        public FlowDocumentBuilder()
         {
-            HWParser = new HomeworkParser(HomeworkFilepath);
+            HWXSerializer = new HomeworkXmlSerializer();
         }
 
         /// <summary>
         /// Builds the RTF document based off the list of courses and assignments
         /// </summary>
         /// <returns></returns>
-        public FlowDocument BuildDocument()
+        public FlowDocument BuildDocument(string filepath)
         {
             FlowDocument doc = new FlowDocument();
-            
-            foreach (Course course in HWParser.AllCourses)
+            IEnumerable<Course> allcourses = HWXSerializer.Deserialize(filepath);
+            foreach (Course course in allcourses)
             {
                 doc.Blocks.Add(new Paragraph(new Bold(new Run(course.Name))) { Margin = new Thickness(0)});
 
