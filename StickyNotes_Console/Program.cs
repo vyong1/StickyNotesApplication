@@ -14,14 +14,14 @@ namespace StickyNotes_Console
         static void Main(string[] args)
         {
             //Establish the directory
-            string name = @"MyAssignments.xml";
-            string path = Environment.CurrentDirectory;
-            path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
-            path = System.IO.Path.Combine(path, name);
-            Console.WriteLine(path);
+            //string name = @"MyAssignments.xml";
+            //string path = Environment.CurrentDirectory;
+            //path = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, @"..\..\")); //Move 2 folders up
+            //path = System.IO.Path.Combine(path, name);
+            //Console.WriteLine(path);
 
-            //Ser(path);
-            //DeSer(path);
+            User user = new User();
+            user.InstallUser();
             
 
 
