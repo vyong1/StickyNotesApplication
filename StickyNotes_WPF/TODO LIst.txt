@@ -1,4 +1,8 @@
 ﻿<UI>
+
+READ THIS!
+https://stackoverflow.com/questions/3591428/beginner-confused-about-binding-and-resources-in-wpf
+
 -Refine the user interface
 -Add functionality for...
 	1.) Adding assignments/courses
@@ -8,5 +12,5 @@
 </UI>
 
 <Backend>
-	-** Main Priority! **Add user persistence
+
 </Backend>
