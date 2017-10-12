@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StickyNotes_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="500" Width="300">
 
     <Window.Resources>
     </Window.Resources>
@@ -28,26 +28,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width=".5*" />
-                    <ColumnDefinition Width=".5*" />
-                    <ColumnDefinition Width=".5*" />
                 </Grid.ColumnDefinitions>
 
                 <Button Margin="2" Content="Load" Grid.Column="0" Click="Load_Click"/>
                 <Button Margin="2" Content="Save" Grid.Column="1" Click="Save_Click"/>
-
-                <Button Margin="2, 5" Content="+" Grid.Column="9" Click="FontUp_Click" />
-                <Viewbox Grid.Column="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Name="FontLabel" Content="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Viewbox>
-                <Button Margin="2, 5" Content="-" Grid.Column="11" Click="FontDown_Click"/>
             </Grid>
 
             <!-- Textbox -->

@@ -33,7 +33,7 @@ namespace StickyNotes_WPF
 
         private void Init()
         {
-            FontLabel.Content = NoteContents.FontSize;
+            //FontLabel.Content = NoteContents.FontSize;
             if(!User.Instance.IsInstalled())
             {
                 User.Instance.Install();
@@ -91,31 +91,7 @@ namespace StickyNotes_WPF
             }
         }
 
-        private void FontUp_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeFontSize(+1);
-        }
-
-        private void FontDown_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeFontSize(-1);
-        }
-
         #endregion
-
-        #region helpers
-
-        private void ChangeFontSize(int delta)
-        {
-            NoteContents.FontSize += delta;
-
-            //Update the font label
-            FontLabel.Content = NoteContents.FontSize.ToString();
-        }
-
-        #endregion
-
-
     }
 
     #region FlowDocumentBuilder
